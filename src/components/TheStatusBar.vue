@@ -1,24 +1,28 @@
 <template>
   <div class="c-status-bar">
     <TheStatusBarItem
-      :number="40"
+      :number="complete"
       title="Fermés"
-      active
+      :tooltip="completeNotif"
+      to="/show/complete"
     />
     <TheStatusBarItem
-      :number="10"
+      :number="rest"
       title="Restants"
-      tooltip
+      :tooltip="restNotif"
+      to="/show/rest"
     />
     <TheStatusBarItem
-      :number="5"
+      :number="rupture"
       title="Rupture"
-      tooltip
+      :tooltip="ruptureNotif"
+      to="/show/rupture"
     />
     <TheStatusBarItem
-      :number="1"
+      :number="canceled"
       title="Annulés"
-      tooltip
+      :tooltip="canceledNotif"
+      to="/show/canceled"
     />
   </div>
 </template>
@@ -30,6 +34,16 @@ export default {
   name: 'TheStatusBar',
   components: {
     TheStatusBarItem
+  },
+  props: {
+    complete: Number,
+    completeNotif: Boolean,
+    rest: Number,
+    restNotif: Boolean,
+    rupture: Number,
+    ruptureNotif: Boolean,
+    canceled: Number,
+    canceledNotif: Boolean,
   }
 }
 </script>

@@ -1,8 +1,18 @@
 <template>
-  <button class="c-status-bar-item" :class="{'c-status-bar-item--tooltip': tooltip, 'c-status-bar-item--active': active}" type="button">
-    <span class="c-status-bar-item__number">{{ number }}</span>
-    <span class="c-status-bar-item__title">{{ title }}</span>
-  </button>
+  <RouterLink :to="to" custom v-slot="{ href, navigate, isActive }">
+    <a
+      :href="href"
+      class="c-status-bar-item"
+      :class="{
+        'c-status-bar-item--tooltip': tooltip,
+        'c-status-bar-item--active': isActive
+      }"
+      @click.prevent="onClick(navigate, isActive)"
+    >
+      <span class="c-status-bar-item__number">{{ number }}</span>
+      <span class="c-status-bar-item__title">{{ title }}</span>
+    </a>
+  </RouterLink>
 </template>
 
 <script>
@@ -11,8 +21,18 @@ export default {
   props: {
     number: Number,
     title: String,
+    to: String,
     active: Boolean,
     tooltip: Boolean,
+  },
+  methods: {
+    onClick(navigate, isActive) {
+      if (isActive) {
+        this.$router.replace('/')
+        return
+      }
+      navigate()
+    }
   }
 }
 </script>
@@ -31,11 +51,6 @@ export default {
   color: var(--grey-400);
   line-height: 1.1;
   padding: space(3) space(2);
-
-  &:hover,
-  &:focus {
-    background: var(--grey-200);
-  }
 
   &__number {
     font-size: $size-large;
@@ -66,6 +81,8 @@ export default {
     }
   }
 
+  &:hover,
+  &:focus,
   &--active {
     color: var(--grey-800)
   }

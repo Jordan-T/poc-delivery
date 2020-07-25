@@ -2,27 +2,21 @@
   <div class="l-base">
     <TheHeader class="l-base__header" />
     <main class="l-base__main">
-      <PrepaSlider />
+      <RouterView />
     </main>
-    <TheStatusBar class="l-base__status" />
   </div>
 </template>
 
 <script>
-import PrepaSlider from './components/PrepaSlider.vue'
-import PrepaCard from './components/PrepaCard.vue'
+import { defineComponent } from 'vue'
 import TheHeader from './components/TheHeader.vue'
-import TheStatusBar from './components/TheStatusBar.vue'
 
-export default {
+export default defineComponent({
   name: 'App',
   components: {
-    PrepaSlider,
-    PrepaCard,
     TheHeader,
-    TheStatusBar,
-  }
-}
+  },
+})
 </script>
 
 <style lang="scss">
@@ -33,28 +27,19 @@ export default {
   flex-direction: column;
   height: 100vh;
   
-  &__header,
-  &__status {
+  &__header {
     flex-shrink: 0;
     width: 100%;
     position: sticky;
     top: 0;
     z-index: 5;
-  }
-
-  &__header {
     background: linear-gradient(to bottom, $body-background-color, $body-background-color 80%, transparent);
   }
 
   &__main {
     flex-grow: 1;
-    padding: 0 space(4);
-  }
-
-  &__status {
-    top: auto;
-    bottom: 0;
-    margin-top: space(4);
+    display: flex;
+    flex-direction: column;
   }
 }
 </style>

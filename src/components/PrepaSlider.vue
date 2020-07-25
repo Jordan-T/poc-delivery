@@ -4,7 +4,6 @@
     <VueAgile
       ref="carousel"
       class="c-prepa-slider__carousel"
-      :initial-slide="currentIndex"
       :dots="false"
       :infinite="false"
       :nav-buttons="false"
@@ -12,7 +11,7 @@
       @after-change="afterChange"
     >
       <div 
-        v-for="item in items"
+        v-for="(item, index) in items"
         :key="item.title"
         class="c-prepa-slider__carousel-slide"
       >
@@ -20,7 +19,7 @@
           :title="item.title"
           :canceled="item.canceled"
           v-model:closed="item.closed"
-          @success="onSuccess(item)"
+          @success="onSuccess(item, index)"
         />
       </div>
     </VueAgile>
@@ -37,22 +36,18 @@ export default {
     PrepaCard,
     VueAgile,
   },
+  props: {
+    items: Array,
+  },
   data() {
-    const items = (new Array(54)).fill({}).map((_, index) => ({
-      title: `NOC ${index + 1}`,
-      canceled: index === 2,
-      closed: index === 0 || index === 2,
-    }))
-
     return {
-      currentIndex: 1,
-      items,
+      currentIndex: 0,
     }
   },
   methods: {
-    onSuccess(item) {
+    onSuccess(item, index) {
       item.closed = true;
-      this.goNext();
+      this.goTo(index + 1);
     },
     goNext() {
       this.$refs.carousel.goToNext()
@@ -65,7 +60,18 @@ export default {
     },
     afterChange(data: {currentSlide: number}) {
       this.currentIndex = data.currentSlide;
+    },
+    goToFirstNotClosed() {
+      const firstIndexNotClosed = this.items.findIndex((it) => !it.closed)
+
+      this.goTo(firstIndexNotClosed === -1 ? 1 : firstIndexNotClosed)
     }
+  },
+  mounted() {
+    this.goToFirstNotClosed()
+  },
+  activated() {
+    this.goToFirstNotClosed()
   }
 }
 </script>
@@ -76,14 +82,12 @@ export default {
 .c-prepa-slider {
   &__progress {
     text-align: center;
-    margin: 0 space(4) space(2);
+    margin: 0 0 space(2);
     color: $text-light;
     font-size: $size-small;
   }
 
   &__carousel {
-    margin: 0 #{$gap * -1};
-
     &-slide {
       align-self: stretch;
       padding: 0 $gap;
