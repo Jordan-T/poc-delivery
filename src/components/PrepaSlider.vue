@@ -39,12 +39,10 @@ export default {
   },
   data() {
     const items = (new Array(54)).fill({}).map((_, index) => ({
-      title: `NOC ${index}`,
+      title: `NOC ${index + 1}`,
       canceled: index === 2,
       closed: index === 0 || index === 2,
     }))
-
-    console.log(items);
 
     return {
       currentIndex: 1,

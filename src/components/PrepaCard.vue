@@ -7,6 +7,12 @@
   >
     <div class="c-prepa-card__header">
       {{ title }}
+      <div
+        v-if="canceled"
+        class="c-prepa-card__header-info"
+      >
+        Commande annulée
+      </div>
     </div>
     <div class="c-prepa-card__main">
       <template v-if="closed">
@@ -146,9 +152,14 @@ export default {
   color: $black;
 
   &__header {
-    margin: space(2);
+    margin: space(3);
     text-align: center;
     font-size: $size-large;
+    line-height: 1.15;
+
+    &-info {
+      font-size: $size-small;
+    }
   }
   
   &__main {
@@ -246,8 +257,8 @@ export default {
   }
 
   &--warning {
-    background: $danger;
-    color: $danger-invert;
+    background: $warning;
+    color: $warning-invert;
   }
 }
 </style>

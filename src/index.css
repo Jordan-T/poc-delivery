@@ -13,6 +13,7 @@
   --base-black: #020101;
   --base-danger: #FE5A4F;
   --base-success: #019845;
+  --base-warning: rgb(233, 159, 0) ;
 
   --white: var(--base-white);
   --grey: var(--base-grey);
@@ -28,6 +29,7 @@
   --black: var(--base-black);
   --danger: var(--base-danger);
   --success: var(--base-success);
+  --warning: var(--base-warning);
 }
 
 .dark-mode {
