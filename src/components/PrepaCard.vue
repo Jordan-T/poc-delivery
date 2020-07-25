@@ -1,33 +1,58 @@
 <template>
-  <div class="c-prepa-card">
+  <div
+    class="c-prepa-card"
+    :class="{
+      'c-prepa-card--warning': canceled
+    }"
+  >
     <div class="c-prepa-card__header">
-      NOC 1
+      {{ title }}
     </div>
     <div class="c-prepa-card__main">
-      <div class="c-prepa-card__grid">
-        <div
-          v-for="item in items"
-          :key="item.title"
-          class="c-prepa-card__grid-item"
-        >
-          <div class="c-prepa-card__grid-item-title">{{ item.title }}</div>
-          <ul class="c-prepa-card__grid-item-list">
-            <li v-for="it in item.items" :key="it.name">
-              <span v-if="it.quantity > 1 || item.alwaysQuantity">{{ it.quantity }}x</span>
-              {{ it.name }}
-            </li>
-          </ul>
+      <template v-if="closed">
+        <div class="c-prepa-card__closed">
+          <template v-if="canceled">Annulé</template>
+          <template v-else>Fermé</template>
         </div>
-      </div>
+        <div class="c-prepa-card__actions buttons">
+          <button class="button is-success" type="button" @click="onShow">
+            Afficher le contenu
+          </button>
+        </div>
+      </template>
+      <template v-else>
+        <div class="c-prepa-card__grid">
+          <div
+            v-for="item in items"
+            :key="item.title"
+            class="c-prepa-card__grid-item"
+          >
+            <div class="c-prepa-card__grid-item-title">{{ item.title }}</div>
+            <ul class="c-prepa-card__grid-item-list">
+              <li v-for="it in item.items" :key="it.name">
+                <span v-if="it.quantity > 1 || item.alwaysQuantity">{{ it.quantity }}x</span>
+                {{ it.name }}
+              </li>
+            </ul>
+          </div>
+        </div>
 
-      <div class="c-prepa-card__actions buttons">
-        <button class="button is-danger" type="button">
-          Rupture
-        </button>
-        <button class="button is-success" type="button">
-          Sac fermé
-        </button>
-      </div>
+        <div class="c-prepa-card__actions buttons">
+          <template v-if="canceled">
+            <button class="button is-success" type="button" @click="onHide">
+              Masquer le contenu
+            </button>
+          </template>
+          <template v-else>
+            <button class="button is-danger" type="button">
+              Rupture
+            </button>
+            <button class="button is-success" type="button" @click="onSuccess">
+              Sac fermé
+            </button>
+          </template>
+        </div>
+      </template>
     </div>
   </div>
 </template>
@@ -35,6 +60,11 @@
 <script lang="ts">
 export default {
   name: 'PrepaCard',
+  props: {
+    title: String,
+    canceled: Boolean,
+    closed: Boolean
+  },
   computed: {
     items() {
       return [
@@ -43,7 +73,7 @@ export default {
           alwaysQuantity: false,
           items: [
             { name: 'Poulet nouilles Teriyaki', quantity: 1 },
-            { name: 'Lorem', quantity: 1 }
+            { name: 'Lorem', quantity: 2 }
           ]
         },
         {
@@ -91,6 +121,17 @@ export default {
         },
       ]
     }
+  },
+  methods: {
+    onShow() {
+      this.$emit('update:closed', false)
+    },
+    onHide() {
+      this.$emit('update:closed', true)
+    },
+    onSuccess() {
+      this.$emit('success')
+    }
   }
 };
 </script>
@@ -102,19 +143,28 @@ export default {
   border: solid 2px $white-ter;
   background: $white-bis;
   border-radius: $radius-large;
+  color: $black;
 
   &__header {
     margin: space(2);
     text-align: center;
-    color: $black;
-    font-size: $size-4;
+    font-size: $size-large;
   }
   
   &__main {
     margin: 0 -2px -2px;
     border: solid 1px $white-ter;
     border-radius: $radius-large;
+    color: $text;
     background: $white;
+  }
+
+  &__closed {
+    padding: space(6) space(3);
+    text-align: center;
+    text-transform: uppercase;
+    font-size: $size-3;
+    border-bottom: solid 1px $white-ter;
   }
 
   &__grid {
@@ -126,6 +176,9 @@ export default {
     overflow: hidden;
 
     &-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       text-align: center;
       border-top: solid 1px $white-ter;
       border-right: solid 1px $white-ter;
@@ -136,9 +189,13 @@ export default {
       }
 
       &-title {
-        font-size: $size-7;
+        font-size: $size-small;
         color: $text-light;
         margin-bottom: space(1);
+      }
+
+      &-list {
+        margin: auto;
       }
 
       li {
@@ -160,12 +217,13 @@ export default {
     .button {
       flex-grow: 1;
       flex-basis: 0;
+      max-width: 50%;
       margin: space(3) space(3);
-      text-transform: uppercase;
       text-align: center;
       justify-content: center;
       border-radius: $radius;
       cursor: pointer;
+      font-size: $size-normal;
 
       &:focus,
       &:hover {
@@ -185,6 +243,11 @@ export default {
         background: $success;
       }
     }
+  }
+
+  &--warning {
+    background: $danger;
+    color: $danger-invert;
   }
 }
 </style>

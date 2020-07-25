@@ -2,15 +2,14 @@
   <div class="l-base">
     <TheHeader class="l-base__header" />
     <main class="l-base__main">
-      <PrepaCard class="mb-5" />
-      <PrepaCard class="mb-5" />
-      <PrepaCard class="mb-5" />
+      <PrepaSlider />
     </main>
     <TheStatusBar class="l-base__status" />
   </div>
 </template>
 
 <script>
+import PrepaSlider from './components/PrepaSlider.vue'
 import PrepaCard from './components/PrepaCard.vue'
 import TheHeader from './components/TheHeader.vue'
 import TheStatusBar from './components/TheStatusBar.vue'
@@ -18,6 +17,7 @@ import TheStatusBar from './components/TheStatusBar.vue'
 export default {
   name: 'App',
   components: {
+    PrepaSlider,
     PrepaCard,
     TheHeader,
     TheStatusBar,
