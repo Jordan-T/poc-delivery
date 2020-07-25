@@ -42,9 +42,9 @@ $weight-medium: 500 !default;
 $weight-semibold: 600 !default;
 $weight-bold: 700 !default;
 
-$radius-small: 2px !default;
-$radius: 4px !default;
-$radius-large: 6px !default;
+$radius-small: 0.125rem;
+$radius: 0.25rem;
+$radius-large: 1rem;
 
 $size-7: .875rem;
 $size-8: .75rem;
@@ -54,7 +54,7 @@ $gap: 15px;
 $light: $white-ter !default;
 $dark: $grey-darker !default;
 $blue-invert: $black;
-$success: var(--danger);
+$success: var(--success);
 $success-invert: $black;
 $danger: var(--danger);
 $danger-invert: $black;
@@ -107,4 +107,8 @@ $hr-height: 2px !default;
 $hr-margin: 1.5rem 0 !default;
 
 $spacing-values: ("0": 0, "1": 0.25rem, "2": 0.5rem, "3": 0.75rem, "4": 1rem, "5": 1.5rem, "6": 3rem);
+
+$body-background-color: $white;
+$body-size: 100%;
+
 
