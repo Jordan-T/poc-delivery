@@ -29,7 +29,7 @@
       <template v-else>
         <div class="c-prepa-card__grid">
           <div
-            v-for="item in items"
+            v-for="item in internalItems"
             :key="item.title"
             class="c-prepa-card__grid-item"
           >
@@ -69,61 +69,51 @@ export default {
   props: {
     title: String,
     canceled: Boolean,
-    closed: Boolean
+    closed: Boolean,
+    items: Object
   },
   computed: {
-    items() {
+    internalItems() {
       return [
         {
           title: 'Plats',
           alwaysQuantity: false,
-          items: [
-            { name: 'Poulet nouilles Teriyaki', quantity: 1 },
-            { name: 'Lorem', quantity: 2 }
-          ]
+          items: this.items.dishes,
         },
         {
           title: 'Desserts',
           alwaysQuantity: false,
-          items: [
-            { name: 'Mousse au chocolat', quantity: 1 }
-          ]
+          items: this.items.desserts,
         },
         {
           title: 'Boissons',
           alwaysQuantity: false,
-          items: [
-            { name: 'Coca cola zero', quantity: 1 }
-          ]
+          items: this.items.drinks,
         },
         {
           title: 'Epicerie',
           alwaysQuantity: false,
-          items: []
+          items: this.items.grocery,
         },
         {
           title: 'Couvers',
           alwaysQuantity: true,
-          items: [
-            { name: 'Jetables', quantity: 1 }
-          ]
+          items: this.items.cutleries,
         },
         {
           title: 'Pain',
           alwaysQuantity: true,
-          items: [
-            { name: 'pain', quantity: 1 }
-          ]
+          items: this.items.breads,
         },
         {
           title: 'Carte',
           alwaysQuantity: false,
-          items: []
+          items: this.items.cards,
         },
         {
           title: 'Goodies',
           alwaysQuantity: false,
-          items: []
+          items: this.items.goodies,
         },
       ]
     }
@@ -203,6 +193,7 @@ export default {
         font-size: $size-small;
         color: $text-light;
         margin-bottom: space(1);
+        font-weight: $weight-bold;
       }
 
       &-list {
@@ -211,6 +202,7 @@ export default {
 
       li {
         line-height: 1.15;
+        font-weight: $weight-bold;
 
         + li {
           margin-top: space(2);

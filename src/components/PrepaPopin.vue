@@ -20,6 +20,7 @@
         :title="item.title"
         :canceled="item.canceled"
         v-model:closed="item.closed"
+        :items="item.items"
         @success="onSuccess(item)"
       />
     </div>

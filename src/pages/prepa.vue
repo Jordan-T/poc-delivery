@@ -35,6 +35,53 @@
 import PrepaSlider from '../components/PrepaSlider.vue'
 import TheStatusBar from '../components/TheStatusBar.vue'
 
+const DISHES = [
+  'Poulet nouilles Teriyaki',
+  'Le poke bowl saumon',
+  'La salade niçoise',
+  'Lasagnes',
+]
+
+const DESSERTS = [
+  'Mousse au chocolat',
+  'Brownie',
+  'Cookie',
+]
+
+const DRINKS = [
+  'Coca cola',
+  'Coca cola zero',
+  'Fanta',
+  'Eau',
+]
+
+const CUTLERIES = [
+  'Jetables',
+  'Réutilisable',
+]
+
+const BREADS = [
+  'pain'
+]
+
+const randomInt = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min
+
+const generateInternalItems = (items, min = 0, max = items.length - 1) => {
+  const internalItems = [...items]
+  const nbItems = randomInt(min, max)
+  const newItems = []
+
+  for (let i = 0; i < nbItems; i++) {
+    const item = internalItems.splice(randomInt(0, internalItems.length - 1), 1)[0]
+    newItems.push({
+      name: item,
+      quantity: randomInt(1, 2)
+    })
+  }
+
+  return newItems
+}
+
 const generateItems = () => (
   new Array(54)
     .fill({})
@@ -42,6 +89,16 @@ const generateItems = () => (
       title: `NOC ${index + 1}`,
       canceled: index === 2,
       closed: index === 2,
+      items: {
+        dishes: generateInternalItems(DISHES, 1, 3),
+        desserts: generateInternalItems(DESSERTS, 0, 2),
+        drinks: generateInternalItems(DRINKS, 0, 2),
+        grocery: [],
+        cutleries: generateInternalItems(CUTLERIES, 0, 1),
+        breads: generateInternalItems(BREADS, 0, 1),
+        cards: [],
+        goodies: []
+      }
     })))
 
 export default {

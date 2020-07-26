@@ -22,6 +22,7 @@
           :title="item.title"
           :canceled="item.canceled"
           v-model:closed="item.closed"
+          :items="item.items"
           @success="onSuccess(item, index)"
         />
       </div>
@@ -137,6 +138,15 @@ export default {
   }
 
   &__carousel {
+    flex-grow: 1;
+    display: flex;
+    align-items: stretch;
+
+    .agile__list {
+      display: flex;
+      align-items: stretch;
+    }
+
     &-slide {
       align-self: stretch;
       padding: 0 $gap;
