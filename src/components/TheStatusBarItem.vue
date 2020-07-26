@@ -10,7 +10,7 @@
       @click.prevent="onClick(navigate, isActive)"
     >
       <span class="c-status-bar-item__number">
-        <NumberAnim :value="number" />
+        <NumberAnim :value="number" hori />
       </span>
       <span class="c-status-bar-item__title">{{ title }}</span>
     </a>
@@ -54,8 +54,8 @@ export default {
   flex-direction: column;
   justify-content: center;
   position: relative;
-  background: var(--grey-100);
-  color: var(--grey-400);
+  background: $white-ter;
+  color: $text-light;
   line-height: 1.1;
   padding: space(3) space(2);
 
@@ -79,7 +79,7 @@ export default {
       margin: -.5em;
       font-size: .75rem;
       border-radius: 50%;
-      background: var(--danger);
+      background: $danger;
     }
     &::before {
       transform: scale(1.75);
@@ -91,7 +91,7 @@ export default {
   &:hover,
   &:focus,
   &--active {
-    color: var(--grey-800)
+    color: $text-strong;
   }
 }
 </style>

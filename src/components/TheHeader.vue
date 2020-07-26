@@ -2,13 +2,22 @@
   <div class="c-header">
     <button class="c-header__button" type="button">M</button>
     <button class="c-header__button c-header__button--main">INTINERAIRE</button>
-    <button class="c-header__button" type="button">S</button>
+    <button
+      class="c-header__button"
+      type="button"
+      @click="toggleTheme"
+    >S</button>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'TheHeader'
+  name: 'TheHeader',
+  methods: {
+    toggleTheme() {
+      document.documentElement.classList.toggle('dark-mode')
+    }
+  }
 };
 </script>
 
@@ -23,8 +32,8 @@ export default {
   &__button {
     @extend %control;
     border-radius: 999px;
-    color: var(--grey-500);
-    background: var(--grey-200);
+    color: $text;
+    background: $grey-lighter;
     width: $control-height;
     height: $control-height;
     justify-content: center;

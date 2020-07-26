@@ -146,8 +146,8 @@ export default {
 @import "../assets/scss/_imports.scss";
 
 .c-prepa-card {
-  border: solid 2px $white-ter;
-  background: $white-bis;
+  border: solid 2px $grey-lighter;
+  background: $white-ter;
   border-radius: $radius-large;
   color: $black;
 
@@ -164,7 +164,7 @@ export default {
   
   &__main {
     margin: 0 -2px -2px;
-    border: solid 1px $white-ter;
+    border: solid 1px $grey-lighter;
     border-radius: $radius-large;
     color: $text;
     background: $white;
@@ -175,7 +175,7 @@ export default {
     text-align: center;
     text-transform: uppercase;
     font-size: $size-3;
-    border-bottom: solid 1px $white-ter;
+    border-bottom: solid 1px $grey-lighter;
   }
 
   &__grid {
@@ -183,7 +183,7 @@ export default {
     grid-template-columns: repeat(2, 1fr);
     margin: -1px;
     border-radius: $radius-large $radius-large 0 0;
-    border-bottom: solid 1px $white-ter;
+    border-bottom: solid 1px $grey-lighter;
     overflow: hidden;
 
     &-item {
@@ -191,8 +191,8 @@ export default {
       flex-direction: column;
       align-items: center;
       text-align: center;
-      border-top: solid 1px $white-ter;
-      border-right: solid 1px $white-ter;
+      border-top: solid 1px $grey-lighter;
+      border-right: solid 1px $grey-lighter;
       padding: space(2) space(2) space(3);
 
       &:last-child:nth-child(2n+1) {

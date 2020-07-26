@@ -51,7 +51,7 @@ $size-8: .75rem;
 $gap: 15px;
 
 // - derived
-$light: $white-ter !default;
+$light: $grey-lighter;
 $dark: $grey-darker !default;
 $blue-invert: $black;
 $success: var(--success);
@@ -60,7 +60,7 @@ $danger: var(--danger);
 $danger-invert: $black;
 $warning: var(--warning);
 $warning-invert: $black;
-$background: $white-ter !default;
+$background: $grey-lighter;
 $light-invert: $dark !default;
 $dark-invert: $light !default;
 
