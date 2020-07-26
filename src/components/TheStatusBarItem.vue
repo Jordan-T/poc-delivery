@@ -9,15 +9,22 @@
       }"
       @click.prevent="onClick(navigate, isActive)"
     >
-      <span class="c-status-bar-item__number">{{ number }}</span>
+      <span class="c-status-bar-item__number">
+        <NumberAnim :value="number" />
+      </span>
       <span class="c-status-bar-item__title">{{ title }}</span>
     </a>
   </RouterLink>
 </template>
 
 <script>
+import NumberAnim from './NumberAnim.vue'
+
 export default {
   name: 'TheStatusBarItem',
+  components: {
+    NumberAnim
+  },
   props: {
     number: Number,
     title: String,

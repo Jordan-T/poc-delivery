@@ -1,12 +1,17 @@
 <template>
   <div class="p-prepa">
     <router-view v-slot="{ Component }">
-      <transition name="fade" mode="out-in">
+      <transition
+        name="fade"
+        mode="out-in"
+      >
         <keep-alive>
           <component
             class="p-prepa__main"
             :is="Component"
+            :key="$route.params.type"
             :items="viewItems"
+            @end="generateNew"
           />
         </keep-alive>
       </transition>
@@ -27,20 +32,26 @@
 </template>
 
 <script lang="ts">
+import { defineComponent } from 'vue'
 import PrepaSlider from '../components/PrepaSlider.vue'
 import TheStatusBar from '../components/TheStatusBar.vue'
 
-export default {
+const generateItems = () => (
+  new Array(54)
+    .fill({})
+    .map((_, index) => ({
+      title: `NOC ${index + 1}`,
+      canceled: index === 2,
+      closed: index === 2,
+    })))
+
+export default defineComponent({
   components: {
     PrepaSlider,
     TheStatusBar
   },
   data() {
-    const items = (new Array(54)).fill({}).map((_, index) => ({
-      title: `NOC ${index + 1}`,
-      canceled: index === 2,
-      closed: index === 2,
-    }))
+    const items = generateItems()
 
     return {
       items
@@ -72,9 +83,13 @@ export default {
         default:
           return this.items
       }
+    },
+    generateNew() {
+      console.log('END')
+      this.items = generateItems()
     }
-  }
-}
+  },
+})
 </script>
 
 <style lang="scss">
@@ -99,6 +114,16 @@ export default {
     z-index: 5;
     bottom: 0;
   }
+}
 
+.fade-enter-active {
+  transition: opacity .3s ease-out;
+}
+.fade-leave-active {
+  transition: opacity .15s ease-out;
+}
+.fade-enter-from,
+.fade-leave-from {
+  opacity: 0;
 }
 </style>

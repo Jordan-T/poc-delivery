@@ -228,31 +228,8 @@ export default {
     .button {
       flex-grow: 1;
       flex-basis: 0;
-      max-width: 50%;
+      max-width: 60%;
       margin: space(3) space(3);
-      text-align: center;
-      justify-content: center;
-      border-radius: $radius;
-      cursor: pointer;
-      font-size: $size-normal;
-
-      &:focus,
-      &:hover {
-        opacity: .9;
-      }
-
-      &:active {
-        opacity: .8;
-      }
-
-      &.is-danger {
-        color: $danger-invert;
-        background: $danger;
-      }
-      &.is-success {
-        color: $success-invert;
-        background: $success;
-      }
     }
   }
 
