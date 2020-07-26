@@ -1,28 +1,28 @@
 <template>
-  <transition
-    :name="transitionName"
-    :css="!!transitionName"
-    @after-leave="onEnd"
-  >
-    <span 
-      v-if="oldValue !== internalValue"
-      :key="internalValue"
-      class="number"
-      :class="[horizontal && 'is-horizontal']"
-    >{{ internalValue }}</span>
-    <span
-      v-else
-      :key="internalValue"
-      class="number"
-      :class="[horizontal && 'is-horizontal']"
-    >{{ internalValue }}</span>
-  </transition>
+  <span>
+    <transition
+      :name="transitionName"
+      :css="!!transitionName"
+      @after-leave="onEnd"
+    >
+      <span 
+        v-if="oldValue !== internalValue"
+        :key="internalValue"
+        class="number"
+        :class="[horizontal && 'is-horizontal']"
+      >{{ internalValue }}</span>
+      <span
+        v-else
+        :key="internalValue"
+        class="number"
+        :class="[horizontal && 'is-horizontal']"
+      >{{ internalValue }}</span>
+    </transition>
+  </span>
 </template>
 
 <script lang="ts">
-import { defineComponent, Transition } from 'vue'
-
-export default defineComponent({
+export default {
   name: 'NumberAnim',
   props: {
     value: Number,
@@ -50,9 +50,6 @@ export default defineComponent({
     animate() {
       return this.internalValue !== this.oldValue
     },
-    transitionComponent() {
-      return Transition
-    },
     transitionName() {
       if (!this.animate) {
         return ''
@@ -67,7 +64,7 @@ export default defineComponent({
       this.oldValue = this.internalValue
     }
   }
-});
+}
 </script>
 
 <style lang="scss">

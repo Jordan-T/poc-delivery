@@ -9,9 +9,9 @@
           <component
             class="p-prepa__main"
             :is="Component"
-            :key="$route.params.type"
+            :key="type"
             :items="viewItems"
-            @end="generateNew"
+            @newItems="generateNew"
           />
         </keep-alive>
       </transition>
@@ -32,7 +32,6 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
 import PrepaSlider from '../components/PrepaSlider.vue'
 import TheStatusBar from '../components/TheStatusBar.vue'
 
@@ -45,7 +44,7 @@ const generateItems = () => (
       closed: index === 2,
     })))
 
-export default defineComponent({
+export default {
   components: {
     PrepaSlider,
     TheStatusBar
@@ -58,6 +57,9 @@ export default defineComponent({
     }
   },
   computed: {
+    type() {
+      return this.$route?.params?.type || ''
+    },
     complete() {
       return this.items.filter(it => it.closed && !it.canceled)
     },
@@ -71,7 +73,7 @@ export default defineComponent({
       return this.items.filter(it => !it.closed && !it.canceled)
     },
     viewItems() {
-      switch (this.$route.params.type) {
+      switch (this.type) {
         case 'complete':
           return this.complete;
         case 'canceled':
@@ -85,11 +87,11 @@ export default defineComponent({
       }
     },
     generateNew() {
-      console.log('END')
+      console.trace('END')
       this.items = generateItems()
     }
   },
-})
+}
 </script>
 
 <style lang="scss">

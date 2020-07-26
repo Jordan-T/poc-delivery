@@ -1,10 +1,7 @@
 <template>
   <div class="c-prepa-slider">
     <div class="c-prepa-slider__progress">
-      <NumberAnim
-        :value="currentIndexDisplay"
-        horizontal
-      /> / {{ items.length }}
+      {{ currentIndexDisplay }} / {{ items.length }}
     </div>
     <VueAgile
       ref="carousel"
@@ -57,13 +54,11 @@
 <script lang="ts">
 import { VueAgile } from 'vue-agile'
 import PrepaCard from './PrepaCard.vue'
-import NumberAnim from './NumberAnim.vue'
 
 export default {
   name: 'PrepaSlider',
   components: {
     PrepaCard,
-    NumberAnim,
     VueAgile,
   },
   props: {
@@ -89,7 +84,7 @@ export default {
   },
   computed: {
     currentIndexDisplay() {
-      return Math.min(this.items.length, this.currentIndex + 1)
+      return Math.min(this.items.length, this.currentIndex + 1) || 1
     },
     canEnd() {
       return this.items.every(it => it.closed)
@@ -121,7 +116,7 @@ export default {
     },
     onEnd() {
       console.log('AAA')
-      this.$emit('end')
+      this.$emit('newItems')
     }
   },
   activated() {
