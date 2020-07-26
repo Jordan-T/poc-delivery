@@ -92,11 +92,11 @@ export default {
 }
 .number-up-enter-from,
 .number-down-leave-to {
-  transform: translateY(-.75em);
+  transform: translateY(.75em);
 }
 .number-up-leave-to,
 .number-down-enter-from {
-  transform: translateY(.75em);
+  transform: translateY(-.75em);
 }
 .number.is-horizontal {
   &.number-up-enter-from,
