@@ -1,18 +1,35 @@
 <template>
   <div class="c-header">
-    <button class="c-header__button" type="button">M</button>
-    <button class="c-header__button c-header__button--main">INTINERAIRE</button>
-    <button
+    <BaseButton
       class="c-header__button"
-      type="button"
+      rounded
+    >
+      M
+    </BaseButton>
+    <BaseButton
+      class="c-header__button c-header__button--main"
+      rounded
+    >
+      INTINERAIRE
+    </BaseButton>
+    <BaseButton
+      class="c-header__button"
+      rounded
       @click="toggleTheme"
-    >S</button>
+    >
+      S
+    </BaseButton>
   </div>
 </template>
 
 <script>
+import BaseButton from './BaseButton.vue'
+
 export default {
   name: 'TheHeader',
+  components: {
+    BaseButton
+  },
   methods: {
     toggleTheme() {
       document.documentElement.classList.toggle('dark-mode')
@@ -30,13 +47,8 @@ export default {
   padding: space(3) space(4);
 
   &__button {
-    @extend %control;
-    border-radius: 999px;
-    color: $text;
-    background: $grey-lighter;
     width: $control-height;
     height: $control-height;
-    justify-content: center;
 
     &--main {
       flex-grow: 1;

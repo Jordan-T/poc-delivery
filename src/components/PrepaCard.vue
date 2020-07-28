@@ -21,9 +21,12 @@
           <template v-else>Fermé</template>
         </div>
         <div class="c-prepa-card__actions buttons">
-          <button class="button is-success" type="button" @click="onShow">
+          <BaseButton
+            type="is-success"
+            @click="onShow"
+          >
             Afficher le contenu
-          </button>
+          </BaseButton>
         </div>
       </template>
       <template v-else>
@@ -45,17 +48,25 @@
 
         <div class="c-prepa-card__actions buttons">
           <template v-if="canceled">
-            <button class="button is-success" type="button" @click="onHide">
+            <BaseButton
+              type="is-success"
+              @click="onHide"
+            >
               Masquer le contenu
-            </button>
+            </BaseButton>
           </template>
           <template v-else>
-            <button class="button is-danger" type="button">
+            <BaseButton
+              type="is-danger"
+            >
               Rupture
-            </button>
-            <button class="button is-success" type="button" @click="onSuccess">
+            </BaseButton>
+            <BaseButton
+              type="is-success"
+              @click="onSuccess"
+            >
               Sac fermé
-            </button>
+            </BaseButton>
           </template>
         </div>
       </template>
@@ -64,8 +75,13 @@
 </template>
 
 <script lang="ts">
+import BaseButton from './BaseButton.vue'
+
 export default {
   name: 'PrepaCard',
+  components: {
+    BaseButton,
+  },
   props: {
     title: String,
     canceled: Boolean,

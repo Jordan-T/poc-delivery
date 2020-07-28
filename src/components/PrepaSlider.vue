@@ -31,22 +31,20 @@
         class="c-prepa-slider__carousel-slide c-prepa-slider__carousel-slide--end"
       >
         <p class="mb-4 is-size-3">THE END</p>
-        <button
+        <BaseButton
           v-if="canEnd"
-          type="button"
-          class="button is-success"
+          type="is-success"
           @click="onEnd"
         >
           Go next
-        </button>
-        <button
+        </BaseButton>
+        <BaseButton
           v-else
-          type="button"
-          class="button is-warning"
+          type="is-warning"
           @click="goToFirstNotClosed"
         >
           Show not closed
-        </button>
+        </BaseButton>
       </div>
     </VueAgile>
   </div>
@@ -54,11 +52,13 @@
 
 <script lang="ts">
 import { VueAgile } from 'vue-agile'
+import BaseButton from './BaseButton.vue'
 import PrepaCard from './PrepaCard.vue'
 
 export default {
   name: 'PrepaSlider',
   components: {
+    BaseButton,
     PrepaCard,
     VueAgile,
   },
