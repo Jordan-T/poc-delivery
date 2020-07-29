@@ -53,7 +53,7 @@ export default {
   font-size: $size-normal;
   padding: space(6) $gap space(3);
   clip-path: circle(#{$clip-radius} at #{$clip-at});
-  transition: 250ms ease 50ms, z-index 0s 300ms;
+  transition: 250ms ease 50ms, z-index 1ms 300ms;
   visibility: hidden;
   pointer-event: none;
 

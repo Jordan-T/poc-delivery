@@ -108,23 +108,30 @@ export default {
   align-items: center;
   padding: space(3) $gap;
 
-  &__button {
-    width: $control-height;
-    height: $control-height;
-    position: relative;
-    z-index: 1;
-    transition: 150ms, z-index 0s 300ms;
+  &__button{
+    &.button { // fix css order import
+      width: $control-height;
+      height: $control-height;
+      position: relative;
+      z-index: 1;
+      transition: 150ms, z-index 1ms 300ms;
+    }
+    
 
     &--main {
-      flex-grow: 1;
-      margin: 0 space(4);
-      width: auto;
-      justify-content: flex-start;
+      &.button { // fix css order import
+        flex-grow: 1;
+        margin: 0 space(4);
+        width: auto;
+        justify-content: flex-start;
+      }
     }
 
     &--active {
-      z-index: 3;
-      transition: z-index 0s;
+      &.button { // fix css order import
+        z-index: 3;
+        transition: 150ms, z-index 1ms;
+      }
     }
   }
 }
