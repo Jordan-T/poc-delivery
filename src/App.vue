@@ -32,7 +32,7 @@ export default defineComponent({
     width: 100%;
     position: sticky;
     top: 0;
-    z-index: 5;
+    z-index: 10;
     background: linear-gradient(to bottom, $body-background-color, $body-background-color 80%, transparent);
   }
 

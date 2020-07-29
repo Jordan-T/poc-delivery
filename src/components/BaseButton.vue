@@ -65,6 +65,7 @@ export default {
 @import "../assets/scss/_imports.scss";
 
 .button {
+  @extend %control;
   border-radius: $radius;
   font-size: $size-normal;
   color: $black;
@@ -88,6 +89,11 @@ export default {
   }
 
   // types
+  &.is-primary {
+    color: $primary-invert;
+    background: $primary;
+  }
+
   &.is-danger {
     color: $danger-invert;
     background: $danger;
