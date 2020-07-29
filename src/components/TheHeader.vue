@@ -21,7 +21,6 @@
       :class="[showSearch && 'c-header__button--active']"
       rounded
       @click="toggleSearch"
-      @dbclick="toggleTheme"
     >
       S
     </BaseButton>
@@ -31,15 +30,25 @@
       position="left"
     >
       <h1>The nav</h1>
-      <BaseButton
-        class="mt-3"
-        type="is-primary"
-        tag="router-link"
-        to="/"
-        rounded
-      >
-        Bouton test
-      </BaseButton>
+      <div class="mt-3">
+        <BaseButton
+          type="is-primary"
+          tag="router-link"
+          to="/"
+          rounded
+        >
+          Bouton test
+        </BaseButton>
+      </div>
+
+      <div class="mt-6">
+        <BaseButton
+          rounded
+          @click="toggleTheme"
+        >
+          Switch theme
+        </BaseButton>
+      </div>
     </TheHeaderDrawer>
 
     <TheHeaderDrawer
