@@ -33,7 +33,7 @@ export default {
 
 .c-header-drawer {
   $clip-radius: $control-height / 2;
-  $clip-at-top: calc(#{space(4)} + #{$clip-radius});
+  $clip-at-top: calc(#{space(3)} + #{$clip-radius});
   $clip-at: var(--drawer-start-position);
   --drawer-start-position: #{50% $clip-at-top};
 
@@ -63,7 +63,7 @@ export default {
   }
 
   &--left {
-    --drawer-start-position: #{calc(#{space(3)} + #{$clip-radius}) #{$clip-at-top}};
+    --drawer-start-position: #{calc(#{$gap} + #{$clip-radius}) #{$clip-at-top}};
 
     .c-header-drawer {
       &__main {
@@ -73,7 +73,7 @@ export default {
   }
 
   &--right {
-    --drawer-start-position: #{calc(100% - #{space(3)} - #{$clip-radius}) #{$clip-at-top}};
+    --drawer-start-position: #{calc(100% - #{$gap} - #{$clip-radius}) #{$clip-at-top}};
 
     .c-header-drawer {
       &__main {
