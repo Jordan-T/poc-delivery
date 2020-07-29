@@ -12,9 +12,13 @@
   --base-grey-900: #111;
   --base-black: #020101;
   --base-primary: #77F;
+  --base-primary-light: #99F;
   --base-danger: #FE5A4F;
-  --base-success: #019845;
+  --base-danger-light: #fc7369;
+  --base-success: #2fa564;
+  --base-success-light: #019845;
   --base-warning: rgb(233, 159, 0) ;
+  --base-warning-light: rgb(236, 180, 57) ;
 
   --white: var(--base-white);
   --grey: var(--base-grey);
@@ -28,10 +32,14 @@
   --grey-800: var(--base-grey-800);
   --grey-900: var(--base-grey-900);
   --black: var(--base-black);
-  --primary: var(--base-primary);
-  --danger: var(--base-danger);
-  --success: var(--base-success);
-  --warning: var(--base-warning);
+  --primary: var(--base-primary-light);
+  --primary-dark: var(--base-primary);
+  --danger: var(--base-danger-light);
+  --danger-dark: var(--base-danger);
+  --success: var(--base-success-light);
+  --success-dark: var(--base-success);
+  --warning: var(--base-warning-light);
+  --warning-dark: var(--base-warning);
 }
 
 .dark-mode {
@@ -46,6 +54,15 @@
   --grey-700: var(--base-grey-300);
   --grey-800: var(--base-grey-200);
   --grey-900: var(--base-grey-100);
+
+  --primary: var(--base-primary);
+  --primary-dark: var(--base-primary-light);
+  --danger: var(--base-danger);
+  --danger-dark: var(--base-danger-light);
+  --success: var(--base-success);
+  --success-dark: var(--base-success-light);
+  --warning: var(--base-warning);
+  --warning-dark: var(--base-warning-light);
 }
 
 html {

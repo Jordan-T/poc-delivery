@@ -55,14 +55,23 @@ $gap: 15px;
 $light: $grey-lighter;
 $dark: $grey-darker !default;
 $blue-invert: $black;
+
 $primary: var(--primary);
+$primary-dark: var(--primary-dark);
 $primary-invert: $black;
+
 $success: var(--success);
+$success-dark: var(--success-dark);
 $success-invert: $black;
+
 $danger: var(--danger);
+$danger-dark: var(--danger-dark);
 $danger-invert: $black;
+
 $warning: var(--warning);
+$warning-dark: var(--warning-dark);
 $warning-invert: $black;
+
 $background: $grey-lighter;
 $light-invert: $dark !default;
 $dark-invert: $light !default;

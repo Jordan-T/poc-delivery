@@ -45,6 +45,7 @@ export default {
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 2;
   width: 100%;
   height: 100%;
   overflow: auto;
@@ -52,7 +53,7 @@ export default {
   font-size: $size-normal;
   padding: space(6) $gap space(3);
   clip-path: circle(#{$clip-radius} at #{$clip-at});
-  transition: 250ms ease 50ms;
+  transition: 250ms ease 50ms, z-index 0s 300ms;
   visibility: hidden;
   pointer-event: none;
 

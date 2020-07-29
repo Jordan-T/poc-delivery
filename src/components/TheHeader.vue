@@ -113,6 +113,7 @@ export default {
     height: $control-height;
     position: relative;
     z-index: 1;
+    transition: 150ms, z-index 0s 300ms;
 
     &--main {
       flex-grow: 1;
@@ -122,7 +123,8 @@ export default {
     }
 
     &--active {
-      z-index: 2;
+      z-index: 3;
+      transition: z-index 0s;
     }
   }
 }

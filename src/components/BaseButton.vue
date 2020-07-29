@@ -65,6 +65,9 @@ export default {
 @import "../assets/scss/_imports.scss";
 
 .button {
+  --background-hover: #{$grey-light};
+  --background-active: #{$grey};
+
   @extend %control;
   border-radius: $radius;
   font-size: $size-normal;
@@ -78,33 +81,37 @@ export default {
   padding-top: .5em;
   text-align: center;
   white-space: nowrap;
-
-  &:focus,
-  &:hover {
-    opacity: .9;
-  }
-
-  &:active {
-    opacity: .8;
-  }
+  transition: 150ms;
 
   // types
   &.is-primary {
+    --background-hover: #{$primary-dark};
+    --background-active: #{$primary-dark};
+
     color: $primary-invert;
     background: $primary;
   }
 
   &.is-danger {
+    --background-hover: #{$danger-dark};
+    --background-active: #{$danger-dark};
+
     color: $danger-invert;
     background: $danger;
   }
   
   &.is-success {
+    --background-hover: #{$success-dark};
+    --background-active: #{$success-dark};
+
     color: $success-invert;
     background: $success;
   }
   
   &.is-warning {
+    --background-hover: #{$warning-dark};
+    --background-active: #{$warning-dark};
+
     color: $warning-invert;
     background: $warning;
   }
@@ -125,6 +132,15 @@ export default {
   // specifics
   &.is-rounded {
     border-radius: $radius-rounded;
+  }
+
+  &:focus,
+  &:hover {
+    background: #{var(--background-hover)};
+  }
+
+  &:active {
+    background: #{var(--background-active)};
   }
 }
 </style>
