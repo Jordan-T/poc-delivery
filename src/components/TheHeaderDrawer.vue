@@ -84,7 +84,7 @@ export default {
 
   &--show {
     z-index: 1;
-    clip-path: circle(calc(100vh + 40vw) at #{$clip-at});
+    clip-path: circle(calc(75vh + 75vw) at #{$clip-at});
     visibility: visible;
     transition: 300ms ease;
     pointer-event: default;
