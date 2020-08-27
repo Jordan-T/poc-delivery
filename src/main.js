@@ -42,6 +42,10 @@ const router = createRouter({
           }
         }
       ]
+    },
+    {
+      path: '/livraison',
+      component: () => import('./pages/livraison.vue'),
     }
   ],
 })
