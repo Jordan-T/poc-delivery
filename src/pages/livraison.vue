@@ -5,7 +5,7 @@
     </div>
     <div class="p-livraison__full" @click="showDetail">
       <img
-        src="//placehold.it/400x300"
+        src="https://placehold.it/400x300"
         width="400"
         height="300"
         alt=""
